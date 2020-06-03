@@ -5,13 +5,21 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tvDrama"
+        android:id="@+id/tvDramaTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Drama List" />
+        android:text="TextView" />
 
-    <ListView
-        android:id="@+id/lvDrama"
+    <TextView
+        android:id="@+id/tvDramaDescription"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvDramaReleaseDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
 </LinearLayout>

@@ -8,15 +8,23 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvListdrama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:text="Dramas" />
+        android:text="List of Dramas:" />
 
     <ListView
         android:id="@+id/lvType"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="532dp"
         android:layout_weight="0" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="ADD" />
+
 </LinearLayout>

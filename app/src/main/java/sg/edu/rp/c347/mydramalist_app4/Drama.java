@@ -6,7 +6,7 @@ public class Drama {
     private String dramaDescription;
     private String dramaReleaseDate;
 
-    public Drama(String dramaTitle, String dramaDescription, String dramaReleaseDate) {
+    public Drama(int id, String dramaTitle, String dramaDescription, String dramaReleaseDate) {
         this.dramaTitle = dramaTitle;
         this.dramaDescription = dramaDescription;
         this.dramaReleaseDate = dramaReleaseDate;
