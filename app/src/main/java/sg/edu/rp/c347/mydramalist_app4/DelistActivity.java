@@ -1,7 +1,5 @@
 package sg.edu.rp.c347.mydramalist_app4;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,52 +10,36 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class DelistActivity extends AppCompatActivity {
 
-    ListView lvType;
+    ListView lvDel;
     ArrayList<Drama> alDramas;
     ArrayAdapter<Drama> aa;
-    Button btnAdd;
-
-    //When Screen is started / is shown / appear
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        lvType = findViewById(R.id.lvType);
-
-        alDramas = new ArrayList<Drama>();
-        alDramas.clear();
-        DBHelper db = new DBHelper(MainActivity.this);
-        alDramas = db.getAllDrama();
-
-        aa = new ArrayAdapter<Drama>(this,  android.R.layout.simple_list_item_1, alDramas);
-
-        lvType.setAdapter(aa);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_delist);
 
-        lvType = findViewById(R.id.lvType);
+        lvDel = findViewById(R.id.lvDel);
 
         alDramas = new ArrayList<Drama>();
-        DBHelper db = new DBHelper(MainActivity.this);
+        DBHelper db = new DBHelper(DelistActivity.this);
         alDramas = db.getAllDrama();
 
-        aa = new ArrayAdapter<Drama>(this,  android.R.layout.simple_list_item_1, alDramas);
+        aa = new ArrayAdapter<Drama>(this, android.R.layout.simple_list_item_1, alDramas);
 
-        lvType.setAdapter(aa);
+        lvDel.setAdapter(aa);
 
-        lvType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvDel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Drama dramas = alDramas.get(position);
-                Intent i = new Intent(MainActivity.this, SecondActivity.class);
+                Intent i = new Intent(DelistActivity.this, DelActivity.class);
                 i.putExtra("dramas", dramas);
                 startActivityForResult(i, 123);
             }
@@ -75,33 +57,33 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.dl:
+                Intent i = new Intent(DelistActivity.this, MainActivity.class);
+
+                startActivity(i);
                 return true;
         }
         switch (item.getItemId()) {
             case R.id.add:
-                Intent i = new Intent(MainActivity.this, ThirdActivity.class);
-
-                startActivityForResult(i, 123);
+                Intent i = new Intent(DelistActivity.this, ThirdActivity.class);
+                startActivity(i);
                 return true;
         }
         switch (item.getItemId()) {
             case R.id.del:
-                Intent i = new Intent(MainActivity.this, DelistActivity.class);
-
-                startActivity(i);
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    //Getting return response and update the arraylist
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // Only handle when 2nd activity closed normally
         //  and data contains something
         if (resultCode == RESULT_OK) {
-            if (requestCode == 123) {
-                DBHelper db = new DBHelper(MainActivity.this);
+            if (requestCode == requestCode) {
+                DBHelper db = new DBHelper(DelistActivity.this);
                 alDramas.clear();
                 alDramas.addAll(db.getAllDrama());
                 db.close();

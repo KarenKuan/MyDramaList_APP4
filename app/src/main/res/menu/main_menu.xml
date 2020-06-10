@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Drama List" android:id="@+id/dl" />
+    <item android:title="Add Drama" android:id="@+id/add" />
+    <item android:title="Edit / Delete Drama" android:id="@+id/del" />
+
+</menu>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,19 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:text="List of Dramas:" />
+        android:text="List of Dramas:"
+        android:textColor="#DA0000"
+        android:textSize="24sp" />
 
     <ListView
         android:id="@+id/lvType"
         android:layout_width="match_parent"
         android:layout_height="532dp"
         android:layout_weight="0" />
-
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="ADD" />
 
 </LinearLayout>

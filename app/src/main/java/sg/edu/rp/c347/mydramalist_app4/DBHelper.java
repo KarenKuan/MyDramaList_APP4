@@ -42,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertTask(String title, String description, String releasedate) {
+    public void insertDrama(String title, String description, String releasedate) {
 
         // Get an instance of the database for writing
         SQLiteDatabase db = this.getWritableDatabase();
@@ -100,5 +100,27 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
 
         return dramas;
+    }
+
+    public int deleteDrama(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String condition = COLUMN_ID + "= ?";
+        String[] args = {String.valueOf(id)};
+        int result = db.delete(TABLE_DRAMA, condition, args);
+        db.close();
+        return result;
+    }
+
+    public int updateDrama(Drama data){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TITLE, data.getDramaTitle());
+        values.put(COLUMN_DESCRIPTION, data.getDramaDescription());
+        values.put(COLUMN_RELEASE_DATE, data.getDramaReleaseDate());
+        String condition = COLUMN_ID + "= ?";
+        String[] args = {String.valueOf(data.getId())};
+        int result = db.update(TABLE_DRAMA, values, condition, args);
+        db.close();
+        return result;
     }
 }
